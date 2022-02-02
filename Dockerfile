@@ -1,26 +1,16 @@
 FROM jenkins/jenkins:lts-jdk11
 
+# Install Docker CE
+# See: https://www.jenkins.io/doc/book/installing/docker/
+
 USER root
 
-# Install Docker CE
-# See: https://docs.docker.com/engine/install/debian/
-# And: https://github.com/faudeltn/Jenkins/blob/master/build/debian/Dockerfile
-RUN apt-get update && \
-    apt-get -y install apt-transport-https \
-        ca-certificates \
-        curl \
-        gnupg2 \
-        software-properties-common && \
-    curl -fsSL https://download.docker.com/linux/$(. /etc/os-release; echo "$ID")/gpg > /tmp/dkey; apt-key add /tmp/dkey && \
-    add-apt-repository \
-        "deb [arch=amd64] https://download.docker.com/linux/$(. /etc/os-release; echo "$ID") \
-        $(lsb_release -cs) \
-        stable" && \
-    apt-get update && \
-    apt-get -y install docker-ce
-
-# Allow jenkins user to use Docker
-RUN usermod -a -G docker jenkins
+RUN apt-get update && apt-get install -y lsb-release
+RUN curl -fsSLo /usr/share/keyrings/docker-archive-keyring.asc https://download.docker.com/linux/debian/gpg
+RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.asc] \
+    https://download.docker.com/linux/debian \
+    $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
+RUN apt-get update && apt-get install -y docker-ce-cli
 
 # Back to Jenkins user
 USER jenkins
@@ -39,4 +29,4 @@ COPY default-user.groovy /usr/share/jenkins/ref/init.groovy.d/
 
 # Install plugins
 COPY plugins.txt /usr/share/jenkins/ref/
-#RUN jenkins-plugin-cli -f /usr/share/jenkins/ref/plugins.txt
+RUN jenkins-plugin-cli -f /usr/share/jenkins/ref/plugins.txt
