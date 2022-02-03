@@ -1,4 +1,6 @@
-FROM jenkins/jenkins:lts-jdk11
+# From offical Jenkins image.
+# See: https://hub.docker.com/r/jenkins/jenkins
+FROM jenkins/jenkins:2.319.2-lts-jdk8
 
 # Install Docker CE
 # See: https://www.jenkins.io/doc/book/installing/docker/
