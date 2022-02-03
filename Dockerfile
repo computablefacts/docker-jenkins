@@ -18,9 +18,7 @@ USER jenkins
 # Do not start Setup Wizard and set JVM memory limits
 ENV JAVA_OPTS_XMX 2g
 ENV JAVA_OPTS_XMS 1g
-ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false -Xmx${JAVA_OPTS_XMX} -Xms${JAVA_OPTS_XMS} ${JAVA_OPTS}"
-
-RUN echo ${JAVA_OPTS}
+ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false -Xmx${JAVA_OPTS_XMX} -Xms${JAVA_OPTS_XMS} ${JAVA_OPTS_EXTRA}"
 
 # Script to create Jenkins administrator user
 ENV JENKINS_USER admin
