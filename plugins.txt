@@ -1,5 +1,6 @@
 blueocean
 docker-workflow
+email-ext
 global-slack-notifier
 matrix-auth
 saml
