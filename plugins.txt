@@ -1,3 +1,6 @@
 blueocean
 docker-workflow
+global-slack-notifier
 matrix-auth
+saml
+slack
