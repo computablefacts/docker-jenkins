@@ -2,6 +2,7 @@ blueocean
 docker-workflow
 email-ext
 global-slack-notifier
+http_request
 matrix-auth
 saml
 slack
