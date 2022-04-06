@@ -26,9 +26,9 @@ ENV JAVA_OPTS_XMS 1g
 ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false -Xmx${JAVA_OPTS_XMX} -Xms${JAVA_OPTS_XMS} ${JAVA_OPTS_EXTRA}"
 
 # Script to create Jenkins administrator user
-ENV JENKINS_USER admin
-ENV JENKINS_PASS admin
-COPY default-user.groovy /usr/share/jenkins/ref/init.groovy.d/
+#ENV JENKINS_USER admin
+#ENV JENKINS_PASS admin
+#COPY default-user.groovy /usr/share/jenkins/ref/init.groovy.d/
 
 # Install plugins
 COPY plugins.txt /usr/share/jenkins/ref/
