@@ -1,6 +1,6 @@
 # From offical Jenkins image.
 # See: https://hub.docker.com/r/jenkins/jenkins
-FROM jenkins/jenkins:2.332.1-lts
+FROM jenkins/jenkins:2.332.3-lts
 
 # Install Docker CE
 # See: https://www.jenkins.io/doc/book/installing/docker/
