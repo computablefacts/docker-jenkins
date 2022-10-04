@@ -1,6 +1,6 @@
 # From offical Jenkins image.
 # See: https://hub.docker.com/r/jenkins/jenkins
-FROM jenkins/jenkins:2.346.2-lts
+FROM jenkins/jenkins:2.361.1-lts
 
 # Install Docker CE
 # See: https://www.jenkins.io/doc/book/installing/docker/
@@ -14,7 +14,7 @@ RUN echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/d
     $(lsb_release -cs) stable" > /etc/apt/sources.list.d/docker.list
 RUN apt-get update && apt-get install -y docker-ce-cli
 
-# Install sshpass - needed to send password when connect to SFTP
+# Install sshpass - needed to send password when connecting to SFTP
 RUN apt-get update && apt-get install -y sshpass
 
 # Back to Jenkins user
