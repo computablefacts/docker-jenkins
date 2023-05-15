@@ -12,7 +12,7 @@ volumes:
 services:
 
   jenkins:
-    image: computablefacts/jenkins:2.387.1
+    image: computablefacts/jenkins:master
     restart: always
     networks:
       - docker
